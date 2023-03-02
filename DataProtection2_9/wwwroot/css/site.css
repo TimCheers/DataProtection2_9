@@ -1,0 +1,100 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.TA1 {
+    height: 100px;
+    width: 600px;
+    margin: 0px 20px 0 0px;
+    text-align: start;
+}
+.TA2 {
+    height: 300px;
+    width: 600px;
+    margin: 0px 20px 0 0px;
+}
+
+.element {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 24px;
+    grid-column-gap: 16px;
+}
+
+.u-btn1 {
+    right: 5px;
+    bottom: 70px;
+    position: absolute;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    padding: .8em 1em calc(.8em + 3px);
+    border-radius: 3px;
+    background: rgb(64,199,129);
+    box-shadow: 0 -3px rgb(53,167,110) inset;
+    transition: 0.2s;
+}
+
+.u-btn2 {
+    right: 170px;
+    bottom: 70px;
+    position: absolute;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    padding: .8em 1em calc(.8em + 3px);
+    border-radius: 3px;
+    background: rgb(64,199,129);
+    box-shadow: 0 -3px rgb(53,167,110) inset;
+    transition: 0.2s;
+}
+
+u-btn:hover {
+    background: rgb(53, 167, 110);
+}
+
+u-btn:active {
+    background: rgb(33,147,90);
+    box-shadow: 0 3px rgb(33,147,90) inset;
+}
+
+.text_Val {
+    right: 5px;
+    bottom: 70px;
+}
+
+.keys {
+    margin: 10px 20px 0 0px;
+    padding: 1px 10px 10px 10px;
+}
+
+.inputKey {
+    background-color: #fafafa;
+    border: 0;
+    box-shadow: 0 0 4px rgba(0,0,0,0.3);
+    transition: .3s box-shadow;
+    width: 800px;
+}
+
+.in_bl {
+    margin: 30px 100px 0px 0px;
+}

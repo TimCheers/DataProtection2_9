@@ -1,0 +1,61 @@
+﻿@model RSA
+@{
+    ViewData["Title"] = "RSA Метод";
+}
+<form asp-controller="Home" asp-action="RSA_Method" method="POST" source="custom" name="form" style="padding: 10px;">
+    <div class="element">
+        <div>
+            <p style="font-size: 20px">Исходный текст</p>
+            <input asp-for="text" class="TA1"></input>
+        </div>
+        <div>
+            <p style="font-size: 20px">Зашифрованный текст</p>
+            <textarea asp-for="myOutput" class="TA2"></textarea>
+        </div>
+    </div>
+    <div>
+        <div class="in_bl">
+            <div class="keys">
+                <label class="u-label">Значение p =  </label>
+                <input asp-for="p" class="inputKey" readonly>
+            </div>
+            <div class="keys">
+                <label class="u-label">Значение q =  </label>
+                <input asp-for="q" class="inputKey" readonly>
+            </div>
+            <div class="keys">
+                <label class="u-label">Значение m =  </label>
+                <input asp-for="m" class="inputKey" readonly>
+            </div>
+        </div>
+        <div class="in_bl">
+            <p style="font-size: 20px">Открытый ключ</p>
+            <div class="keys">
+                <label class="u-label">Значение n =  </label>
+                <input asp-for="n" class="inputKey" readonly>
+            </div>
+            <div class="keys">
+                <label class="u-label">Значение e =  </label>
+                <input asp-for="e" class="inputKey" readonly>
+            </div>
+        </div>
+        <div class="in_bl">
+            <p style="font-size: 20px">Закрытый ключ</p>
+            <div class="keys">
+                <label class="u-label">Значение d =  </label>
+                <input asp-for="d" class="inputKey">
+            </div>
+        </div>
+
+
+
+    </div>
+    <input type="submit" asp-action="RSA_Method" value="Зашфровать" class="u-btn1">
+    <input type="hidden" asp-for="text" />
+    <div asp-validation-summary="All"></div>
+</form>
+<form asp-controller="Home" asp-action="Call_Generate" method="POST" source="custom" name="form" style="padding: 10px;">
+    <input type="submit" asp-action="Call_Generate" value="Обновить ключи" class="u-btn2">
+    <input type="hidden" asp-for="text" />
+    <div asp-validation-summary="All"></div>
+</form>
