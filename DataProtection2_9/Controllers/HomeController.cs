@@ -10,6 +10,9 @@ namespace DataProtection2_9.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private static RSA rsa = new RSA();
+        public DES_cipher des = new DES_cipher();
+
+        private static DESContent desContet = new DESContent();
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -35,7 +38,7 @@ namespace DataProtection2_9.Controllers
                 rsa.text = "";
                 rsa.CreateCipher(text);
             }
-                
+
             return View(rsa);
         }
         [HttpPost]
@@ -44,7 +47,43 @@ namespace DataProtection2_9.Controllers
             Generate();
             return RedirectToAction("RSA_Method");
         }
+        public IActionResult DES_cipher()
+        {
+            return View();
+        }
+        //private void EncodeDES(string encryptionString, string key1)
+        //{
+        //    string s = encryptionString;
+        //    string key = key1;
+        //    desContet.encryptionKey = key;
+        //    desContet.encryptionString = encryptionString;
 
+        //    des.CutStringIntoBlocks(s);
+
+        //    key = des.CorrectKeyWord(key, s.Length / (2 * des.Blocks.Length));
+        //    //textBoxEncodeKeyWord.Text = key;
+        //    key = des.StringToBinaryFormat(key);
+
+        //    for (int j = 0; j < 16; j++)
+        //    {
+        //        for (int i = 0; i < des.Blocks.Length; i++)
+        //            des.Blocks[i] = des.EncodeDES_One_Round(des.Blocks[i], key);
+
+        //        key = des.KeyToNextRound(key);
+        //    }
+
+        //    key = des.KeyToPrevRound(key);
+
+        //    //textBoxDecodeKeyWord.Text = des.StringFromBinaryToNormalFormat(key);
+
+        //    string result = "";
+
+        //    for (int i = 0; i < des.Blocks.Length; i++)
+        //        result += des.Blocks[i];
+
+        //    desContet.decryptionString = result;
+        //    desContet.encryptionKey = key;
+        //}
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
