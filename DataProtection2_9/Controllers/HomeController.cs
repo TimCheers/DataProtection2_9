@@ -10,18 +10,26 @@ namespace DataProtection2_9.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private static RSA rsa = new RSA();
-        public DES_cipher des = new DES_cipher();
-
+        private static DES_cipher des = new DES_cipher();
         private static DESContent desContet = new DESContent();
+        private static Diffy_Helman dh = new Diffy_Helman();
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
-        private void Generate()
+        private void GenerateRSA()
         {
             rsa.GetNumbers();
             rsa.CreatePQ();
             rsa.CreateKeys();
+        }
+        private void GenerateDiffy()
+        {
+            dh.GetNumbers();
+            dh.GetSimple();
+            dh.CreateXY();
+            dh.CreatePQ();
+            dh.CreateABK();
         }
         public IActionResult Index()
         {
@@ -41,11 +49,28 @@ namespace DataProtection2_9.Controllers
 
             return View(rsa);
         }
-        [HttpPost]
-        public IActionResult Call_Generate()
+        public IActionResult Diffy_Helman(string text)
         {
-            Generate();
+            if (!string.IsNullOrEmpty(text))
+            {
+                dh.text = "";
+                dh.CreateCipher(text);
+            }
+
+            return View(dh);
+        }
+
+        [HttpPost]
+        public IActionResult Call_GenerateRSA()
+        {
+            GenerateRSA();
             return RedirectToAction("RSA_Method");
+        }
+        [HttpPost]
+        public IActionResult Call_GenerateDiffy()
+        {
+            GenerateDiffy();
+            return RedirectToAction("Diffy_Helman");
         }
         public IActionResult DES_cipher()
         {
@@ -88,6 +113,7 @@ namespace DataProtection2_9.Controllers
             desContet.encryptionKey = key;
             return RedirectToAction("DES_cipher");
         }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

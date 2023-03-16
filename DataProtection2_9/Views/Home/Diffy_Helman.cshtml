@@ -1,0 +1,60 @@
+﻿@model Diffy_Helman
+@{
+    ViewData["Title"] = "Diffy Helman";
+}
+<form asp-controller="Home" asp-action="Diffy_Helman" method="POST" source="custom" name="form" style="padding: 10px;">
+    <div class="element">
+        <div>
+            <p style="font-size: 20px">Исходный текст</p>
+            <input asp-for="text" class="TA1"></input>
+        </div>
+        <div>
+            <p style="font-size: 20px">Зашифрованный текст</p>
+            <textarea asp-for="myOutput" class="TA2"></textarea>
+        </div>
+    </div>
+    <div>
+        <div class="in_bl">
+            <div class="keys">
+                <label class="u-label">Значение p =  </label>
+                <input asp-for="p" class="inputKey" readonly>
+            </div>
+            <div class="keys">
+                <label class="u-label">Значение g =  </label>
+                <input asp-for="g" class="inputKey" readonly>
+            </div>
+            <div class="keys">
+                <label class="u-label">Значение x =  </label>
+                <input asp-for="x" class="inputKey" readonly>
+            </div>
+            <div class="keys">
+                <label class="u-label">Значение y =  </label>
+                <input asp-for="y" class="inputKey" readonly>
+            </div>
+            <div class="keys">
+                <label class="u-label">Значение A =  </label>
+                <input asp-for="A" class="inputKey" readonly>
+            </div>
+            <div class="keys">
+                <label class="u-label">Значение B =  </label>
+                <input asp-for="B" class="inputKey" readonly>
+            </div>
+            <div class="keys">
+                <label class="u-label">Значение Kx =  </label>
+                <input asp-for="Kx" class="inputKey" readonly>
+            </div>
+            <div class="keys">
+                <label class="u-label">Значение Ky =  </label>
+                <input asp-for="Ky" class="inputKey" readonly>
+            </div>
+        </div>
+    </div>
+    <input type="submit" asp-action="Diffy_Helman" value="Зашифровать" class="u-btn1">
+    <input type="hidden" asp-for="text" />
+    <div asp-validation-summary="All"></div>
+</form>
+<form asp-controller="Home" asp-action="Call_GenerateDiffy" method="POST" source="custom" name="form" style="padding: 10px;">
+    <input type="submit" asp-action="Call_GenerateDiffy" value="Обновить ключи" class="u-btn2">
+    <input type="hidden" asp-for="text" />
+    <div asp-validation-summary="All"></div>
+</form>

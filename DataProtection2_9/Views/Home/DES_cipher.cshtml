@@ -1,6 +1,6 @@
 ﻿@model DESContent
 @{
-    ViewData["Title"] = "RSA Метод";
+    ViewData["Title"] = "DES cipher";
 }
 <form asp-controller="Home" asp-action="EncodeDES" method="POST" source="custom" name="form" style="padding: 10px;">
     <div class="element">
@@ -21,8 +21,3 @@
     <input type="hidden" asp-for="encryptionString" />
     <div asp-validation-summary="All"></div>
 </form>
-@*<form asp-controller="Home" asp-action="Call_Generate" method="POST" source="custom" name="form" style="padding: 10px;">
-    <input type="submit" asp-action="Call_Generate" value="Расшфровать" class="u-btn2">
-    <input type="hidden" asp-for="text" />
-    <div asp-validation-summary="All"></div>
-</form>*@
