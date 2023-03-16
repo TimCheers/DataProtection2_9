@@ -1,8 +1,8 @@
-﻿@model DES_cipher
+﻿@model DESContent
 @{
     ViewData["Title"] = "RSA Метод";
 }
-<form asp-controller="Home" asp-action="RSA_Method" method="POST" source="custom" name="form" style="padding: 10px;">
+<form asp-controller="Home" asp-action="EncodeDES" method="POST" source="custom" name="form" style="padding: 10px;">
     <div class="element">
         <div>
             <p style="font-size: 20px">Исходный текст</p>
@@ -14,12 +14,10 @@
         </div>
         <div>
             <p style="font-size: 20px">Зашифрованный текст</p>
-            <textarea asp-for="decryptionKey" class="TA2"></textarea>
+            <textarea asp-for="decryptionString" class="TA2"></textarea>
         </div>
     </div>
-    <div>
-    </div>
-    <input type="submit" asp-action="RSA_Method" value="Зашфровать" class="u-btn1">
+    <input type="submit" asp-action="EncodeDES" value="Зашфровать" class="u-btn1">
     <input type="hidden" asp-for="encryptionString" />
     <div asp-validation-summary="All"></div>
 </form>

@@ -1,6 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Numerics;
 
-namespace DataProtection2_9.Models
+namespace DataProtection2_9
 {
     public class DESContent
     {

@@ -49,41 +49,45 @@ namespace DataProtection2_9.Controllers
         }
         public IActionResult DES_cipher()
         {
-            return View();
+            return View(desContet);
         }
-        //private void EncodeDES(string encryptionString, string key1)
-        //{
-        //    string s = encryptionString;
-        //    string key = key1;
-        //    desContet.encryptionKey = key;
-        //    desContet.encryptionString = encryptionString;
+        [HttpPost]
+        public IActionResult EncodeDES(string encryptionString, string encryptionKey)
+        {
+            string s = encryptionString;
+            string key = encryptionKey;
+            desContet.encryptionKey = key;
+            desContet.encryptionString = encryptionString;
 
-        //    des.CutStringIntoBlocks(s);
+            des.CutStringIntoBlocks(s);
 
-        //    key = des.CorrectKeyWord(key, s.Length / (2 * des.Blocks.Length));
-        //    //textBoxEncodeKeyWord.Text = key;
-        //    key = des.StringToBinaryFormat(key);
+            key = des.CorrectKeyWord(key, s.Length / (2 * des.Blocks.Length));
+            //textBoxEncodeKeyWord.Text = key;
+            key = des.StringToBinaryFormat(key);
 
-        //    for (int j = 0; j < 16; j++)
-        //    {
-        //        for (int i = 0; i < des.Blocks.Length; i++)
-        //            des.Blocks[i] = des.EncodeDES_One_Round(des.Blocks[i], key);
+            for (int j = 0; j < 16; j++)
+            {
+                for (int i = 0; i < des.Blocks.Length; i++)
+                    des.Blocks[i] = des.EncodeDES_One_Round(des.Blocks[i], key);
 
-        //        key = des.KeyToNextRound(key);
-        //    }
+                key = des.KeyToNextRound(key);
+            }
 
-        //    key = des.KeyToPrevRound(key);
+            key = des.KeyToPrevRound(key);
 
-        //    //textBoxDecodeKeyWord.Text = des.StringFromBinaryToNormalFormat(key);
+            key = des.StringFromBinaryToNormalFormat(key);
 
-        //    string result = "";
+            string result = "";
 
-        //    for (int i = 0; i < des.Blocks.Length; i++)
-        //        result += des.Blocks[i];
+            for (int i = 0; i < des.Blocks.Length; i++)
+                result += des.Blocks[i];
 
-        //    desContet.decryptionString = result;
-        //    desContet.encryptionKey = key;
-        //}
+            result = des.StringFromBinaryToNormalFormat(result);
+
+            desContet.decryptionString = result;
+            desContet.encryptionKey = key;
+            return RedirectToAction("DES_cipher");
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
