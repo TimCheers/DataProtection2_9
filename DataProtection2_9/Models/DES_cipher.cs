@@ -16,7 +16,8 @@ namespace DataProtection2_9
         public const int quantityOfRounds = 16; //количество раундов
 
         public string[] Blocks; //сами блоки в двоичном формате
-
+        public string outputRes = "";
+        public string pass_lw7 = "";
 
         public string StringToRightLength(string input)
         {

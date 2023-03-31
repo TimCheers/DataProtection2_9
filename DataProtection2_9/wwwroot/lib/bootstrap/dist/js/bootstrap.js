@@ -820,11 +820,11 @@
 
       const isAnimated = this._element.classList.contains(CLASS_NAME_FADE$5);
 
-      this._queueCallback(() => this._destroyElement(), this._element, isAnimated);
+      this._queueCallback(() => this.destroyElement(), this._element, isAnimated);
     } // Private
 
 
-    _destroyElement() {
+    destroyElement() {
       this._element.remove();
 
       EventHandler.trigger(this._element, EVENT_CLOSED);
